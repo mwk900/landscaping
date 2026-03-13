@@ -161,6 +161,7 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
       });
 
       window.history.replaceState(null, "", `#${sectionId}`);
+      setMobileExpanded(false);
     },
     [setActiveIfChanged]
   );
@@ -169,16 +170,20 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
 
   return (
     <>
-      <div className="fixed bottom-[5rem] left-3 z-[45] md:hidden">
+      <div className="fixed bottom-[6.75rem] left-3 z-[45] md:hidden">
         <button
           type="button"
-          className="inline-flex h-11 min-h-11 items-center gap-2 rounded-full border border-[#bfd2bc] bg-[#f8fbf7]/95 px-4 text-sm font-semibold text-[#24452f] shadow-[0_10px_22px_rgba(20,39,26,0.18)] backdrop-blur transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b]"
+          className="inline-flex h-11 min-h-11 items-center gap-2 rounded-full border border-[#c7d3c3] bg-[#fbf8f0]/92 px-4 text-sm font-semibold text-[#24452f] shadow-[0_12px_26px_rgba(20,39,26,0.18)] backdrop-blur transition-colors duration-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b]"
           onClick={() => setMobileExpanded((current) => !current)}
           aria-label={mobileExpanded ? "Close section navigation" : "Open section navigation"}
           aria-expanded={mobileExpanded}
           aria-controls="scrollspy-mobile-panel"
         >
-          <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#d8e6d4] text-[11px] transition-colors duration-200">
+          <span
+            className={`inline-flex h-5 w-5 items-center justify-center rounded-full text-[11px] transition-colors duration-200 ${
+              mobileExpanded ? "bg-[#21442a] text-white" : "bg-[#d8e2d2] text-[#21442a]"
+            }`}
+          >
             {activeLabel.slice(0, 1)}
           </span>
           <span>{activeLabel}</span>
@@ -186,7 +191,7 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
 
         <div
           id="scrollspy-mobile-panel"
-          className={`absolute bottom-full left-0 mb-3 w-[13.5rem] rounded-2xl border border-[#c5d6c2] bg-white/96 p-2 shadow-[0_16px_30px_rgba(19,35,24,0.22)] backdrop-blur transition-all duration-250 ease-out ${
+          className={`absolute bottom-full left-0 mb-3 w-[14rem] rounded-[1.4rem] border border-[#cdd7ca] bg-[#fbf8f0]/95 p-2 shadow-[0_18px_34px_rgba(19,35,24,0.22)] backdrop-blur transition-all duration-250 ease-out ${
             mobileExpanded
               ? "translate-y-0 opacity-100 pointer-events-auto"
               : "translate-y-2 opacity-0 pointer-events-none"
@@ -217,13 +222,18 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
                       onClick={() => onNavigate(section.id)}
                       aria-label={`Go to ${section.label} section`}
                       aria-current={isActive ? "page" : undefined}
-                      className={`flex min-h-11 w-full items-center justify-between rounded-xl px-3 py-2 text-left text-sm transition-colors duration-250 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b] ${
+                      className={`flex min-h-11 w-full items-center justify-between rounded-[1rem] px-3 py-2 text-left text-sm transition-all duration-250 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b] ${
                         isActive
-                          ? "bg-[#21442a] text-white shadow-[0_6px_14px_rgba(18,38,25,0.2)]"
-                          : "text-[#30483a] hover:bg-[#edf4ea]"
+                          ? "bg-[#21442a] text-white shadow-[0_8px_16px_rgba(18,38,25,0.18)]"
+                          : "text-[#30483a] hover:bg-[#f0eee4]"
                       }`}
                     >
-                      {section.label}
+                      <span>{section.label}</span>
+                      <span
+                        className={`h-2 w-2 rounded-full ${
+                          isActive ? "bg-[#dce9da]" : "bg-[#d3dbcf]"
+                        }`}
+                      />
                     </button>
                   </li>
                 );
@@ -235,7 +245,7 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
 
       <nav
         aria-label="Page sections"
-        className="fixed top-1/2 right-5 z-40 hidden -translate-y-1/2 rounded-2xl border border-[#c5d6c2] bg-white/90 p-2 shadow-[0_14px_26px_rgba(19,35,24,0.16)] backdrop-blur md:block"
+        className="fixed top-1/2 right-5 z-40 hidden -translate-y-1/2 rounded-[1.5rem] border border-[#cbd6c8] bg-[#fbf8f0]/88 p-2 shadow-[0_18px_34px_rgba(19,35,24,0.16)] backdrop-blur md:block"
       >
         <ul className="space-y-1">
           {sections.map((section) => {
@@ -248,13 +258,18 @@ export function ScrollSpyNav({ sections }: ScrollSpyNavProps) {
                   onClick={() => onNavigate(section.id)}
                   aria-label={`Go to ${section.label} section`}
                   aria-current={isActive ? "page" : undefined}
-                  className={`inline-flex min-h-11 w-full rounded-xl px-3 py-2 text-sm font-medium transition-colors duration-250 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b] ${
+                  className={`inline-flex min-h-11 w-full items-center justify-between rounded-[1rem] px-3 py-2 text-sm font-medium transition-all duration-250 ease-out focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#2f6a3b] ${
                     isActive
-                      ? "bg-[#21442a] text-white shadow-[0_6px_14px_rgba(18,38,25,0.2)]"
-                      : "text-[#2e493a] hover:bg-[#edf4ea]"
+                      ? "bg-[#21442a] text-white shadow-[0_8px_16px_rgba(18,38,25,0.18)]"
+                      : "text-[#2e493a] hover:bg-[#f0eee4]"
                   }`}
                 >
-                  {section.label}
+                  <span>{section.label}</span>
+                  <span
+                    className={`h-2 w-2 rounded-full ${
+                      isActive ? "bg-[#dce9da]" : "bg-[#d3dbcf]"
+                    }`}
+                  />
                 </button>
               </li>
             );

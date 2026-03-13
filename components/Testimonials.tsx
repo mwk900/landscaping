@@ -32,8 +32,8 @@ export function Testimonials() {
         </h2>
       </div>
 
-      <div className="mt-7 grid gap-4 md:grid-cols-5">
-        <article className="surface-card relative overflow-hidden p-6 md:col-span-3 md:p-8">
+      <div className="mt-7 grid gap-4 lg:grid-cols-[1.2fr_0.8fr]">
+        <article className="surface-card relative overflow-hidden p-6 md:p-8">
           <Image
             src={leafTexture}
             alt="Garden texture background"
@@ -46,7 +46,7 @@ export function Testimonials() {
             <p className="text-xs font-semibold uppercase tracking-[0.12em] text-[#5a7062]">
               Average rating 4.9/5
             </p>
-            <blockquote className="mt-4 text-2xl leading-tight text-[#243b2d]">
+            <blockquote className="mt-4 max-w-2xl text-2xl leading-tight text-[#243b2d]">
               &quot;{testimonials[0].quote}&quot;
             </blockquote>
             <div className="mt-5 flex items-center gap-3">
@@ -60,42 +60,44 @@ export function Testimonials() {
           </div>
         </article>
 
-        <article className="surface-card p-6 md:col-span-2 md:mt-10">
-          <blockquote className="text-lg leading-7 text-[#2a4132]">
-            &quot;{testimonials[1].quote}&quot;
-          </blockquote>
-          <div className="mt-4 flex items-center gap-3">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d5e5cf] text-xs font-semibold text-[#1f3a2a]">
-              RP
-            </span>
-            <p className="text-sm font-medium text-[#445b4d]">
-              {testimonials[1].name}, {testimonials[1].location}
+        <div className="grid gap-4">
+          <article className="surface-card p-6">
+            <blockquote className="text-lg leading-7 text-[#2a4132]">
+              &quot;{testimonials[1].quote}&quot;
+            </blockquote>
+            <div className="mt-4 flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d5e5cf] text-xs font-semibold text-[#1f3a2a]">
+                RP
+              </span>
+              <p className="text-sm font-medium text-[#445b4d]">
+                {testimonials[1].name}, {testimonials[1].location}
+              </p>
+            </div>
+          </article>
+
+          <article className="surface-card p-6">
+            <blockquote className="text-lg leading-7 text-[#2a4132]">
+              &quot;{testimonials[2].quote}&quot;
+            </blockquote>
+            <div className="mt-4 flex items-center gap-3">
+              <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d5e5cf] text-xs font-semibold text-[#1f3a2a]">
+                SM
+              </span>
+              <p className="text-sm font-medium text-[#445b4d]">
+                {testimonials[2].name}, {testimonials[2].location}
+              </p>
+            </div>
+          </article>
+
+          <div className="rounded-[1.8rem] border border-[#c7d7c2] bg-[#21442a] p-6 text-[#eef5ec] shadow-[0_18px_40px_rgba(20,38,26,0.14)]">
+            <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#b7d0b9]">
+              Why this matters
+            </p>
+            <p className="mt-3 text-base leading-7">
+              Most projects reach us after separate one-off jobs. A single design-to-build team
+              creates cleaner timelines, stronger finishes, and better value.
             </p>
           </div>
-        </article>
-
-        <article className="surface-card p-6 md:col-span-2 md:-mt-10">
-          <blockquote className="text-lg leading-7 text-[#2a4132]">
-            &quot;{testimonials[2].quote}&quot;
-          </blockquote>
-          <div className="mt-4 flex items-center gap-3">
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full bg-[#d5e5cf] text-xs font-semibold text-[#1f3a2a]">
-              SM
-            </span>
-            <p className="text-sm font-medium text-[#445b4d]">
-              {testimonials[2].name}, {testimonials[2].location}
-            </p>
-          </div>
-        </article>
-
-        <div className="section-shell rounded-3xl border border-[#c7d7c2] bg-[#21442a] p-6 text-[#eef5ec] md:col-span-3">
-          <p className="text-sm font-semibold uppercase tracking-[0.12em] text-[#b7d0b9]">
-            Why this matters
-          </p>
-          <p className="mt-3 max-w-xl text-base leading-7">
-            Most projects reach us after separate one-off jobs. A single design-to-build
-            team creates cleaner timelines, stronger finishes, and better value.
-          </p>
         </div>
       </div>
     </section>

@@ -33,7 +33,7 @@ export function Footer({ phoneNumber, phoneHref }: FooterProps) {
             Disclaimer
           </p>
           <p className="mt-3 text-sm text-[#4d6456]">
-            Demo website for portfolio purposes - not a real company.
+            Portfolio website built by NorthSummit.agency.
           </p>
         </div>
       </div>

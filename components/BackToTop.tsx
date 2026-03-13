@@ -38,9 +38,9 @@ export function BackToTop() {
         window.scrollTo({
           top: 0,
           behavior: prefersReducedMotion ? "auto" : "smooth",
-        })
+        });
       }}
-      className="fixed right-3 bottom-22 z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#bcd1b8] bg-white/95 text-[#21442a] shadow-[0_10px_22px_rgba(21,41,27,0.22)] backdrop-blur md:right-6 md:bottom-6"
+      className="fixed right-3 bottom-[6.9rem] z-40 inline-flex h-11 w-11 items-center justify-center rounded-full border border-[#c6d2c2] bg-[#fbf8f0]/95 text-[#21442a] shadow-[0_12px_24px_rgba(21,41,27,0.2)] backdrop-blur md:right-6 md:bottom-6"
     >
       <svg
         aria-hidden="true"

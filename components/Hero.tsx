@@ -6,19 +6,35 @@ type HeroProps = {
 };
 
 const trustIndicators = [
-  "Fully insured and safety certified",
+  "Fully insured and tidy on site",
   "Nottingham crews with 12+ years experience",
   "Rated 4.9/5 by local homeowners",
+];
+
+const quickStats = [
+  {
+    label: "Average lead time",
+    value: "2 to 3 weeks",
+  },
+  {
+    label: "Typical projects",
+    value: "Patios, planting, full garden builds",
+  },
+  {
+    label: "Latest project",
+    value: "West Bridgford patio renewal",
+  },
 ];
 
 export function Hero({ phoneHref }: HeroProps) {
   return (
     <section id="top" className="section-shell pt-2" aria-labelledby="hero-title">
-      <div className="relative overflow-hidden rounded-[2rem] border border-[#d9e4d4] bg-[#f8fbf5] p-6 shadow-[0_18px_45px_rgba(34,61,39,0.08)] sm:p-8 lg:p-12">
-        <div className="pointer-events-none absolute -top-24 -right-20 h-56 w-56 rounded-full bg-[#dbe8d5] blur-3xl" />
-        <div className="pointer-events-none absolute -bottom-24 -left-20 h-56 w-56 rounded-full bg-[#e9e2cf] blur-3xl" />
+      <div className="surface-panel relative overflow-hidden p-6 sm:p-8 lg:p-12">
+        <div className="pointer-events-none absolute -top-24 -right-20 h-56 w-56 rounded-full bg-[#dbe1d3] blur-3xl" />
+        <div className="pointer-events-none absolute -bottom-24 -left-12 h-56 w-56 rounded-full bg-[#e9dcc0] blur-3xl" />
+        <div className="pointer-events-none absolute inset-x-10 top-0 h-px bg-white/70" />
 
-        <div className="relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+        <div className="relative grid gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:items-center">
           <div className="animate-rise">
             <p className="section-kicker">Lifestyle landscaping for modern homes</p>
             <h1 id="hero-title" className="display-title mt-4 text-[#1f3325]">
@@ -42,7 +58,7 @@ export function Hero({ phoneHref }: HeroProps) {
               {trustIndicators.map((item) => (
                 <li
                   key={item}
-                  className="inline-flex items-start gap-2 rounded-xl bg-white/80 px-3 py-2 text-sm text-[#334738]"
+                  className="inline-flex items-start gap-2 rounded-[1rem] border border-white/70 bg-white/78 px-3 py-2 text-sm text-[#334738] shadow-[0_10px_24px_rgba(26,43,31,0.06)] backdrop-blur"
                 >
                   <span
                     aria-hidden="true"
@@ -54,26 +70,39 @@ export function Hero({ phoneHref }: HeroProps) {
             </ul>
           </div>
 
-          <div className="relative mx-auto w-full max-w-md animate-rise delay-1">
-            <div className="rounded-[1.7rem] border border-[#cad8c2] bg-gradient-to-br from-[#edf3e8] to-[#dce8d6] p-4 shadow-[0_15px_45px_rgba(18,33,23,0.18)]">
+          <div className="relative mx-auto w-full max-w-[35rem] animate-rise delay-1">
+            <div className="editorial-frame p-4 sm:p-5">
               <Image
                 src={heroGarden}
                 alt="Premium landscaped garden seating space"
-                className="aspect-[4/5] w-full rounded-[1.35rem] object-cover"
+                className="aspect-[4/5] w-full rounded-[1.55rem] object-cover"
                 placeholder="blur"
                 priority
-                sizes="(max-width: 1024px) 90vw, 34vw"
+                sizes="(max-width: 1024px) 92vw, 36vw"
               />
+
+              <div className="absolute bottom-5 left-5 max-w-[13rem] rounded-[1.35rem] border border-white/20 bg-[rgba(18,29,22,0.76)] p-3 text-[#f5f3ec] shadow-[0_14px_30px_rgba(18,29,22,0.28)] backdrop-blur">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.16em] text-[#c8d8c2]">
+                  Outdoor living
+                </p>
+                <p className="mt-2 text-sm leading-6">
+                  Designed to feel calm, practical, and easy to use every day.
+                </p>
+              </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-5 rounded-2xl border border-[#d0ddca] bg-white px-4 py-3 shadow-[0_12px_26px_rgba(20,41,26,0.12)]">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#4f6456]">Latest project</p>
-              <p className="mt-1 text-sm font-semibold text-[#233a2b]">West Bridgford patio renewal</p>
-            </div>
-
-            <div className="absolute -top-6 right-4 rounded-2xl border border-[#d0ddca] bg-white px-4 py-3 shadow-[0_12px_26px_rgba(20,41,26,0.12)]">
-              <p className="text-xs uppercase tracking-[0.08em] text-[#4f6456]">Average lead time</p>
-              <p className="mt-1 text-sm font-semibold text-[#233a2b]">2 to 3 weeks</p>
+            <div className="mt-5 grid gap-3 sm:grid-cols-3">
+              {quickStats.map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-[1.35rem] border border-[#ced8c7] bg-white/80 px-4 py-4 shadow-[0_12px_28px_rgba(24,39,29,0.09)] backdrop-blur"
+                >
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-[#4f6456]">
+                    {item.label}
+                  </p>
+                  <p className="mt-2 text-sm font-semibold leading-6 text-[#233a2b]">{item.value}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
